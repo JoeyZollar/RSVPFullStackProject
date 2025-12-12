@@ -1,5 +1,6 @@
 import express from "express";
 import Event from "../models/Event.js";
+import User from "../models/User.js";
 
 const router = express.Router();
 
@@ -7,11 +8,30 @@ const router = express.Router();
 // POST /api/events
 router.post("/", async (req, res) => {
   try {
+    const { userId, title, date, time, place, description } = req.body;
+
+    if (!userId) {
+      return res.status(400).json({ message: 'No user ID.'});
+    }
+
+    console.log('user Id for creating event:',userId);
+
     // Create new event from request body
-    const newTask = new Event(req.body);
+    const newEvent = new Event({
+      title,
+      date,
+      time,
+      place,
+      description,
+      rsvps: []
+    });
 
     // Save to database
-    const savedEvent = await newTask.save();
+    const savedEvent = await newEvent.save();
+
+    await User.findByIdAndUpdate(userId, {
+      $addToSet: { events: savedEvent._id }
+    });
 
     // Send back the saved event
     res.status(201).json(savedEvent);

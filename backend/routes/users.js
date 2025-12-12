@@ -58,7 +58,8 @@ router.get("/", async (req, res) => {
 // GET /api/users/:id
 router.get("/:id", async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.params.id)
+      .populate("events"); //populate event details
 
     if (!user) {
       return res.status(404).json({

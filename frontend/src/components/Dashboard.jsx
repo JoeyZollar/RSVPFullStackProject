@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { getAllEvents, rsvpToEvent, unRsvpToEvent } from '../api/events';
 import EventItem from './EventItem';
+import { getUserById } from '../api/users';
 
 const Dashboard = ({ setPage, user }) => {
   // State for all events
   const [events, setEvents] = useState([]);
+  const [userEvents, setUserEvents] = useState([]);
   const rsvpEvents = events.filter(event =>
     event.rsvps?.includes(user._id)
   );
@@ -56,6 +58,20 @@ const Dashboard = ({ setPage, user }) => {
     fetchEvents();
   }, []);
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const fullUser = await getUserById(user._id);
+
+        setUserEvents(fullUser.events); // Store the users events into the state
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
   return (
     <div className='dashboard-container'>
       <header>
@@ -75,6 +91,21 @@ const Dashboard = ({ setPage, user }) => {
                 user = {user}
                 event = {event}
                 onUnRsvp = {() => handleUnRsvp(event._id)}
+              />
+            ))
+          )}
+        </section>
+        <section className='created-events'>
+          <h2>Your Events</h2>
+
+          {userEvents.length === 0 ? (
+            <p>You haven't created any events yet.</p>
+          ) : (
+            userEvents.map(event => (
+              <EventItem
+                key = {event._id}
+                user = {user}
+                event = {event}
               />
             ))
           )}
