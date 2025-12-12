@@ -12,7 +12,10 @@ const PORT = process.env.PORT || 3001;
 // Middleware
 app.use(
   cors({
-    origin: process.env.CLIENT_ORIGIN,
+    origin: [
+      'http://localhost:5173',
+      'https://rsvpfullstackproject.netlify.app'
+    ]
   })
 );
 app.use(express.json());
