@@ -57,6 +57,12 @@ const Dashboard = ({ setPage, user }) => {
     }
   }
 
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    setUserEvents(null);
+    setPage('login')
+  }
+
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -89,6 +95,7 @@ const Dashboard = ({ setPage, user }) => {
       <header>
         <p> Welcome {user.username}</p>
         <button onClick={() => setPage('createevent')}>Create Event</button>
+        <button onClick={() => handleLogout()}>Log out</button>
       </header>
       <main>
         <section className='rsvp-events'>
