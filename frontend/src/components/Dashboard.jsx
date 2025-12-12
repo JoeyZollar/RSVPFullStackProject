@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getAllEvents, rsvpToEvent, unRsvpToEvent } from '../api/events';
+import { getAllEvents, rsvpToEvent, unRsvpToEvent, deleteEvent } from '../api/events';
 import EventItem from './EventItem';
 import { getUserById } from '../api/users';
 
@@ -44,6 +44,18 @@ const Dashboard = ({ setPage, user }) => {
       console.error('UnRSVP failed:', error);
     }
   };
+
+  const handleDeleteEvent = async (eventId) => {
+    try {
+      await deleteEvent(eventId);
+
+      setEvents(events.filter(event => event._id !== eventId));
+      setUserEvents(userEvents.filter(event => event._id !== eventId));
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -106,6 +118,7 @@ const Dashboard = ({ setPage, user }) => {
                 key = {event._id}
                 user = {user}
                 event = {event}
+                onDelete={() => handleDeleteEvent(event._id)}
               />
             ))
           )}
@@ -116,7 +129,9 @@ const Dashboard = ({ setPage, user }) => {
           {events.length === 0 ? (
             <p>No events yet.</p>
           ) : (
-            events.map(event => (
+            events
+            .filter(event => event.owner !== user._id) // Filter out events that user owns
+            .map(event => (
               <EventItem
                 key = {event._id}
                 event = {event}

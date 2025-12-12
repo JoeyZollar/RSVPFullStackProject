@@ -22,7 +22,8 @@ const eventSchema = new mongoose.Schema({
   description: {
     type: String
   },
-  rsvps: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }]
+  rsvps: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+  owner: {type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }
 });
 
 export default mongoose.model("Event", eventSchema);

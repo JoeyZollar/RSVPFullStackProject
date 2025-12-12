@@ -1,6 +1,8 @@
 :root {
   --primary: darkslategray;
   --primary-hover: rgb(101, 135, 135);
+  --primary-red: rgb(196, 45, 45);
+  --primary-red-hover: rgb(204, 115, 115);
   --primary-white: #ffffff;
 }
 
@@ -95,6 +97,14 @@ button {
   border-style: none;
   border-radius: 5px;
   padding: 5px 15px;
+}
+
+.delete-button {
+  background-color: var(--primary-red);
+}
+
+.delete-button:hover {
+  background-color: var(--primary-red-hover);
 }
 
 button:hover {

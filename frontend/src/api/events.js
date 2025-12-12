@@ -42,6 +42,15 @@ export const unRsvpToEvent = async (eventId, userId) => {
   return response.json();
 };
 
+// Delete event
+export const deleteEvent = async (eventId) => {
+  const response = await fetch(`${API_URL}/api/events/${eventId}`, {
+    method: 'DELETE'
+  });
+  if (!response.ok) throw new Error('Failed to delete event');
+  return response.json();
+}
+
 // Create new event
 export const createEvent = async (eventData) => {
   const response = await fetch(`${API_URL}/api/events`, {

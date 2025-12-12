@@ -23,7 +23,8 @@ router.post("/", async (req, res) => {
       time,
       place,
       description,
-      rsvps: []
+      rsvps: [],
+      owner: userId
     });
 
     // Save to database
