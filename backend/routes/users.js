@@ -3,6 +3,27 @@ import User from "../models/User.js";
 
 const router = express.Router();
 
+// Login user
+// POST /api/users/login
+router.post("/login", async (req, res) => {
+  try {
+    const {username, password} = req.body;
+
+    const user = await User.findOne({ username });
+
+    if (!user) return res.status(400).json({message: "User not found"});
+
+    if (user.password !== password) {
+      return res.status(400).json({ message: 'Incorrect password' });
+    }
+
+    res.json({ message: 'Login successful', user });
+
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 // Create new user
 // POST /api/users
 router.post("/", async (req, res) => {
