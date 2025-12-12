@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { createUser } from '../api/users';
+import '../LoginSignup.css'
 
 const Signup = ({ setPage, setUser }) => {
   const [username, setUsername] = useState('');
@@ -18,7 +19,7 @@ const Signup = ({ setPage, setUser }) => {
       <h2>Create Event Planner Account</h2>
       
       <div className='input-section'>
-        <input placeholder='username' value={username} onChange={input => setUsername(input.target.value)} />
+        <input placeholder='Username' value={username} onChange={input => setUsername(input.target.value)} />
         <input type='password' placeholder='Password' value={password} onChange={input => setPassword(input.target.value)} />
         <button onClick={handleSignup}>Sign Up</button>
       </div>

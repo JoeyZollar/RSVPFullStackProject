@@ -1,112 +1,220 @@
-:root {
-  --primary: darkslategray;
-  --primary-hover: rgb(101, 135, 135);
-  --primary-red: rgb(196, 45, 45);
-  --primary-red-hover: rgb(204, 115, 115);
-  --primary-white: #ffffff;
-}
-
+/* Dashboard Styles */
 .dashboard-container {
-  max-width: 100%;
-  height: 100vh;
-
-  background-color: aqua;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: sans-serif;
+  color: #333;
 }
 
-.dashboard-container main {
-  display: flex;
-  justify-content: space-around;
-  padding: 2vh;
-  background-color: beige;
-  width: 100%;
-  height: 100%;
-}
-
+/* Header */
 .dashboard-container header {
   display: flex;
   justify-content: space-between;
-  padding: 4vh 10vw;
-  background-color: beige;
-  width: 100%;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
-.browse-events {
-  background-color: cadetblue;
-  width: 25%;
+.dashboard-container header p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.dashboard-container header button {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #0077ff;
+  color: #fff;
+  transition: background-color 0.2s;
+}
+
+.dashboard-container header button:hover {
+  background-color: #005fcc;
+}
+
+/* Sections */
+.dashboard-container main {
+  display: grid;
+  gap: 40px;
+}
+
+/* Section titles */
+.dashboard-container h2 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 5px;
+}
+
+/* Event Lists */
+.rsvp-events, .created-events, .browse-events {
+  display: grid;
+  gap: 15px;
+}
+
+/* Event Card */
+.event-card {
+  background-color: #f5f5f5;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.event-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.event-card h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.event-card p {
+  margin: 3px 0;
+  font-size: 0.95rem;
+}
+
+/* Buttons inside event card */
+.event-card button {
+  margin-top: 10px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #005fcc;
+  color: #fff;
+  transition: background-color 0.2s;
+}
+
+.event-card button:hover {
+  opacity: 0.9;
+}
+
+.event-card .delete-button {
+  background-color: #dc3545;
+}
+
+/* Container */
+.create-event {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px 30px;
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Header */
+.create-event header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.create-event header p {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.create-event header button {
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #0077ff;
+  color: #fff;
+  transition: background-color 0.2s;
+}
+
+.create-event header button:hover {
+  background-color: #005fcc;
+}
+
+/* Form */
+.create-event form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.event-card {
+/* Inputs */
+.create-event input,
+.create-event textarea {
+  padding: 10px 12px;
+  font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 14px;
-  background: #fafafa;
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  align-items: start;
+  outline: none;
+  transition: border-color 0.2s;
 }
 
-.login-screen {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1vh;
+.create-event input:focus,
+.create-event textarea:focus {
+  border-color: #0077ff;
 }
 
-.login-screen .input-section {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 40%;
-  max-width: 500px;
+/* Textarea */
+.create-event textarea {
+  resize: vertical;
+  min-height: 80px;
 }
 
-input {
-  padding: 10px 5px;
-  border-radius: 2px;
-  border-width: 2px;
+/* Submit Button */
+.create-event button[type="submit"] {
+  padding: 10px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color:  #005fcc;
+  color: #fff;
+  transition: background-color 0.2s;
 }
 
-input:focus {
-  border-color: var(--primary);
+.create-event button[type="submit"]:hover {
+  background-color:  #09478e;
 }
 
-.input-section button {
-  background-color: var(--primary); 
-  color: var(--primary-white);
-  height: 40px;
-  border-style: none;
-  border-radius: 5px;
+/* Responsive */
+@media (max-width: 500px) {
+  .create-event {
+    padding: 15px 20px;
+  }
+
+  .create-event header p {
+    font-size: 1.1rem;
+  }
+
+  .create-event button[type="submit"] {
+    font-size: 0.95rem;
+  }
 }
 
-button {
-  background-color: var(--primary); 
-  color: var(--primary-white);
-  border-style: none;
-  border-radius: 5px;
-  padding: 5px 15px;
+
+/* Responsive Grid */
+@media (min-width: 768px) {
+  .dashboard-container main {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .rsvp-events, .created-events, .browse-events {
+    gap: 20px;
+  }
 }
 
-.delete-button {
-  background-color: var(--primary-red);
-}
-
-.delete-button:hover {
-  background-color: var(--primary-red-hover);
-}
-
-button:hover {
-  background-color: var(--primary-hover);
+@media (min-width: 1024px) {
+  .dashboard-container main {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
