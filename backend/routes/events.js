@@ -21,6 +21,31 @@ router.post("/", async (req, res) => {
   }
 });
 
+// RSVP for Event
+// Put /api/events/:id/rsvp
+router.put("/:id/rsvp", async (req, res) => {
+  try {
+    const { userId } = req.body;
+
+    const updatedEvent = await Event.findByIdAndUpdate(
+      req.params.id,
+      { $addToSet: { rsvps: userId }}, // $addToSet adds the user only once and prevents duplicates
+      { new: true }
+    );
+
+    if (!updatedEvent) {
+      return res.status(404).json({
+        message: "Event not found.",
+      });
+    }
+
+    res.json(updatedEvent);
+  } catch (error) {
+    // Handle errors
+    res.status(400).json({ message: error.message });
+  }
+});
+
 // Get all events
 // GET /api/events
 router.get("/", async (req, res) => {
