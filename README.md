@@ -1,18 +1,11 @@
 # RSVPFullStackProject
-*A concise tagline describing your app (1 sentence).*
+*An application to create and signup for events.*
 
 ---
 
 ## 🚀 Overview
 
-Briefly describe:
-
-* What your application does
-* Who it’s for
-* The core problem it solves
-
-**Example:**
-A full-stack habit tracking app that helps users build routines and visualize streaks over time. Includes authentication and dynamic data visualizations.
+A full-stack event building app that allows users to RSVP for and create events. Includes user authentication.
 
 ---
 
@@ -20,10 +13,8 @@ A full-stack habit tracking app that helps users build routines and visualize st
 
 | Type                         | Link                                                           |
 | ---------------------------- | -------------------------------------------------------------- |
-| **Frontend (Deployed Site)** | [https://your-frontend-url.com](https://your-frontend-url.com) |
-| **Backend (API Base URL)**   | [https://your-backend-url.com](https://your-backend-url.com)   |
-
-> Test these in an incognito window before submission.
+| **Frontend (Deployed Site)** | (https://rsvpfullstackproject.netlify.app/)   |
+| **Backend (API Base URL)**   | (https://rsvpfullstackproject.onrender.com)   |
 
 ---
 
@@ -31,24 +22,25 @@ A full-stack habit tracking app that helps users build routines and visualize st
 
 List **3–6 key features**, ideally with short bullets:
 
-* Create, read, update, and delete **[core resource name]**
+* Create, read, and delete events
 * Responsive UI with reusable components
-* Backend API with full CRUD operations
 * Data persisted in MongoDB
-* Advanced feature: *describe yours clearly*
-* Error handling on client + server
+* Advanced feature: user authentication with login and signup capabilities*
+* RSVP for another user's event.
+* Dashboard of RSVP'd events, created events, and all events to browse
 
 ### **Advanced Feature**
 
 Describe which advanced feature you implemented and **1–2 sentences** about how it works:
-
+My advanced feature includes the ability for users to signup and log into accounts to have their own personalized events and RSVP's. My backend schemas store what events a user has created, and each event has an owner associated with it. Using react state, once a user's data is confirmed by entering their username and password, the app will display their personal event data. This works through a /api/login route that gets user data, which is then saved to the react user state in App.jsx. This state is then used to filter and display the correct events the user needs to see.
 
 ---
 
 ## 📸 Screenshots
 
-> Include 2–4 screenshots of your app.
-> Use relative paths (e.g., `/screenshots/home.png`) or full URLs.
+<img width="1728" height="871" alt="RSVPFullStack:screenshots:login" src="https://github.com/user-attachments/assets/9f00d449-e0a2-4e29-9fcd-78ffc34cc9bc" />
+<img width="1728" height="877" alt="RSVPFullStack:screenshots:dashboard" src="https://github.com/user-attachments/assets/e51bcb62-838a-4507-bee8-445d5eb3697a" />
+<img width="1728" height="881" alt="RSVPFullStack:screenshots:create" src="https://github.com/user-attachments/assets/1f5a663e-06fd-463e-8367-6cba6c341552" />
 
 ---
 
