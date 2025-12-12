@@ -31,7 +31,6 @@ List **3–6 key features**, ideally with short bullets:
 
 ### **Advanced Feature**
 
-Describe which advanced feature you implemented and **1–2 sentences** about how it works:
 My advanced feature includes the ability for users to signup and log into accounts to have their own personalized events and RSVP's. My backend schemas store what events a user has created, and each event has an owner associated with it. Using react state, once a user's data is confirmed by entering their username and password, the app will display their personal event data. This works through a /api/login route that gets user data, which is then saved to the react user state in App.jsx. This state is then used to filter and display the correct events the user needs to see.
 
 ---
@@ -52,19 +51,32 @@ Describe how the pieces fit together.
 /frontend
   /src
     /components
-    /pages
-    App.jsx
-    main.jsx
+      /CreateEvent.jsx
+      /Dashboard.jsx
+      /EventItem.jsx
+      /Login.jsx
+      /Signup.jsx
+  /api
+    / events.js
+    / users.js
+  /App.jsx
+  /App.css
+  /main.jsx
+  /LoginSignup.css
 
 /backend
   /models
+    /Event.js
+    /User.js
   /routes
+    /events.js
+    /users.js
   server.js
 ```
 
 Include a sentence explaining the flow:
 
-> The React frontend communicates with the Express backend through API routes. The backend interacts with MongoDB using Mongoose models, and environment variables are used to store secrets.
+> When the user interacts with the react frontend, eventhandlers communicate to the express backend through API routes with fetch calls. The backend server then communicates with the MongoDB using Mongoose, making the data persistent.
 
 ---
 
@@ -73,7 +85,7 @@ Include a sentence explaining the flow:
 ### **1. Clone the project**
 
 ```bash
-git clone https://github.com/your-username/your-project.git
+git clone (https://github.com/JoeyZollar/RSVPFullStackProject.git)
 cd your-project
 ```
 
@@ -132,31 +144,56 @@ npm run dev
 
 Document the **main 3–5 routes**:
 
-### **GET /api/resource**
+### **GET /api/events**
 
-Returns all resources.
+Returns all events.
 
-### **POST /api/resource**
+### **POST /api/events**
 
-Creates a new resource.
+Creates a new event.
 Body example:
 
 ```json
 {
-  "name": "Example",
-  "description": "Text here"
+  "title": "Example",
+  "date": 12122025,
+  "time": "2:30pm",
+  "place": "Place example",
+  "description": "Text here",
+  "owner": ObjectId(693b62564fcacc9c011815c8)
 }
 ```
 
-### **PATCH /api/resource/:id**
+### **PUT /api/events/:id/rsvp**
 
-Updates a resource.
+Updates the RSVP list of an event.
 
-### **DELETE /api/resource/:id**
+Body Example:
 
-Deletes a resource.
+```json
+{
+  {userId: "693b62564fcacc9c011815c8"}
+}
+```
 
-> Add additional routes if needed (auth, file uploads, WebSockets, etc.).
+### **POST /api/users/login**
+
+Get's a users data from the database to log them in.
+
+### **GET /api/users/:id
+
+Gets a user by their id and also populates their created events to be displayed by the frontend.
+Response example:
+
+```json
+{
+_id: "693b62564fcacc9c011815c8"
+username: "myuser"
+password: "secretpassword"
+events: [{_id: "693c7ea6079127f2e672ee9b", title: "Birthday Party", date: 2212026, time: "8:30pm",…}]
+  0: {_id: "693c7ea6079127f2e672ee9b", title: "Birthday Party", date: 2212026, time: "8:30pm",…}
+}
+```
 
 ---
 
@@ -166,13 +203,17 @@ Document where/how you deployed:
 
 ### **Frontend**
 
-* Vercel / Netlify
-* Explain build command if different (`npm run build`)
+* For my frontend deployment I used Netlify.
+* In order to use Netlify I manually added the VITE_API_BASE_URL environmental variable, which allows access to the deployed Render backend.
+* Build command: `npm run build`
 
 ### **Backend**
 
-* Render / Railway
-* Note environment variable setup
+* For backend I used Render.
+* In order to use Render I manually added in my environmental variables:
+*   MONGODB_URI: MongoDB acess URL
+*   PORT: Port number
+*   CLIENT_ORIGIN: frontend url
 
 
 ---
