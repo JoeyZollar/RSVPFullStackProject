@@ -12,12 +12,10 @@ const PORT = process.env.PORT || 3001;
 // Middleware
 app.use(
   cors({
-    origin: [
-      'http://localhost:5173',
-      'https://rsvpfullstackproject.netlify.app'
-    ]
+    origin: process.end.CLIENT_ORIGIN
   })
 );
+
 app.use(express.json());
 
 // MongoDB Connection
