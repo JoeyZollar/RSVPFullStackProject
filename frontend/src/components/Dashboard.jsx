@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getAllEvents, rsvpToEvent } from '../api/events';
+import { getAllEvents, rsvpToEvent, unRsvpToEvent } from '../api/events';
 import EventItem from './EventItem';
 
 const Dashboard = ({ setPage, user }) => {
@@ -11,20 +11,35 @@ const Dashboard = ({ setPage, user }) => {
 
   const handleRsvp = async (eventId) => {
     try {
-      const updated = await rsvpToEvent(eventId, user._id);
-
-      console.log('RSVP sucess:', updated)
+      const updatedEvent = await rsvpToEvent(eventId, user._id);
 
       // Update the state to show most current rsvp's
       setEvents(prevEvents =>
         // Find the event the user rsvp'd for and replace it with the new one
         prevEvents.map(event =>
-          event._id === updated._id ? updated : event
+          event._id === updatedEvent._id ? updatedEvent : event
         )
       );
 
     } catch (error) {
       console.error('RSVP failed:', error);
+    }
+  };
+
+  const handleUnRsvp = async (eventId) => {
+    try {
+      const updatedEvent = await unRsvpToEvent(eventId, user._id);
+
+      // Update the state to show most current rsvp's
+      setEvents(prevEvents =>
+        // Find the event the user rsvp'd for and replace it with the new one
+        prevEvents.map(event =>
+          event._id === updatedEvent._id ? updatedEvent : event
+        )
+      );
+
+    } catch (error) {
+      console.error('UnRSVP failed:', error);
     }
   };
 
@@ -56,8 +71,10 @@ const Dashboard = ({ setPage, user }) => {
           ) : (
             rsvpEvents.map(event => (
               <EventItem
-                key={event._id}
-                event={event}
+                key = {event._id}
+                user = {user}
+                event = {event}
+                onUnRsvp = {() => handleUnRsvp(event._id)}
               />
             ))
           )}
@@ -72,7 +89,9 @@ const Dashboard = ({ setPage, user }) => {
               <EventItem
                 key = {event._id}
                 event = {event}
-                onRsvp={() => handleRsvp(event._id)}
+                user = {user}
+                onRsvp = {() => handleRsvp(event._id)}
+                onUnRsvp = {() => handleUnRsvp(event._id)}
               />
             ))
           )}

@@ -46,6 +46,31 @@ router.put("/:id/rsvp", async (req, res) => {
   }
 });
 
+// UnRSVP for Event
+// Put /api/events/:id/unrsvp
+router.put("/:id/unrsvp", async (req, res) => {
+  try {
+    const { userId } = req.body;
+
+    const updatedEvent = await Event.findByIdAndUpdate(
+      req.params.id,
+      { $pull: { rsvps: userId }}, // remove the user from the array
+      { new: true }
+    );
+
+    if (!updatedEvent) {
+      return res.status(404).json({
+        message: "Event not found.",
+      });
+    }
+
+    res.json(updatedEvent);
+  } catch (error) {
+    // Handle errors
+    res.status(400).json({ message: error.message });
+  }
+});
+
 // Get all events
 // GET /api/events
 router.get("/", async (req, res) => {

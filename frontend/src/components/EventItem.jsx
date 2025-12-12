@@ -1,4 +1,6 @@
-const EventItem = ({ event, onRsvp }) => {
+const EventItem = ({ event, user, onRsvp, onUnRsvp }) => {
+  const isRsvped = event.rsvps?.includes(user._id);
+
   return (
     <div className="event-card">
       <h3>{event.title}</h3>
@@ -14,7 +16,11 @@ const EventItem = ({ event, onRsvp }) => {
       )}
 
       <div className="event-card-actions">
-          <button onClick={() => onRsvp(event._id)}>RSVP</button>
+        {isRsvped ? (
+            <button onClick={() => onUnRsvp(event._id)}>Un-RSVP</button>
+        ) : (
+            <button onClick={() => onRsvp(event._id)}>RSVP</button>
+        )}
       </div>
     </div>
   );

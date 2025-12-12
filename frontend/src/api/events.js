@@ -13,7 +13,7 @@ export const getAllEvents = async () => {
 // RSVP for event
 export const rsvpToEvent = async (eventId, userId) => {
   const response = await fetch(`${API_URL}/api/events/${eventId}/rsvp`, {
-    method: 'Put',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -22,6 +22,22 @@ export const rsvpToEvent = async (eventId, userId) => {
 
   if (!response.ok) {
     throw new Error('Failed to RSVP for event.')
+  }
+  return response.json();
+};
+
+// UnRSVP for event
+export const unRsvpToEvent = async (eventId, userId) => {
+  const response = await fetch(`${API_URL}/api/events/${eventId}/unrsvp`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ userId })
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to un-RSVP for event.')
   }
   return response.json();
 };
