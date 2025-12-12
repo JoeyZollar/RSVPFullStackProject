@@ -18,13 +18,15 @@ const Login = ({ setPage, setUser }) => {
   };
 
   return (
-    <div>
+    <div className='login-screen'>
       <h2>Event Planner Login</h2>
-
-      <input placeholder="Username" value={username} onChange={input => setUsername(input.target.value)} />
-      <input type="password" placeholder="Password" value={password} onChange={input => setPassword(input.target.value)} />
-      <button onClick={handleLogin}>Login</button>
       
+      <div className='input-section'>
+        <input placeholder='Username' value={username} onChange={input => setUsername(input.target.value)} />
+        <input type='password' placeholder='Password' value={password} onChange={input => setPassword(input.target.value)} />
+        <button onClick={handleLogin}>Login</button>
+      </div>
+
       <p>
         Don't have an account? <button onClick={() => setPage('signup')}>Sign Up</button>
       </p>

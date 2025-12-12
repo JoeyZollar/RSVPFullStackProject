@@ -14,12 +14,14 @@ const Signup = ({ setPage, setUser }) => {
   };
 
   return (
-    <div>
+    <div className='login-screen'>
       <h2>Create Event Planner Account</h2>
-
-      <input placeholder="username" value={username} onChange={input => setUsername(input.target.value)} />
-      <input type="password" placeholder="Password" value={password} onChange={input => setPassword(input.target.value)} />
-      <button onClick={handleSignup}>Sign Up</button>
+      
+      <div className='input-section'>
+        <input placeholder='username' value={username} onChange={input => setUsername(input.target.value)} />
+        <input type='password' placeholder='Password' value={password} onChange={input => setPassword(input.target.value)} />
+        <button onClick={handleSignup}>Sign Up</button>
+      </div>
       
       <p>
         Already have an account? <button onClick={() => setPage('login')}>Login</button>
