@@ -231,15 +231,7 @@ Document where/how you deployed:
 
 ## 🎥 Video Walkthrough
 
-**Link to Loom/YouTube:**
-[https://your-video-link.com](https://your-video-link.com)
-
-Include quick timestamps if you want extra professionalism:
-
-* **0:00–0:30** Overview
-* **0:30–1:30** Core features demo
-* **1:30–2:30** Advanced feature
-* **2:30–3:00** Technical challenge solved
+(https://drive.google.com/drive/folders/1W81FjjKpBFcP1RexSSiMdfj4cJcYI_15?usp=drive_link)
 
 ---
 
