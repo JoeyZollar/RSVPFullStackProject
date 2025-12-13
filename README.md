@@ -238,31 +238,33 @@ Include quick timestamps if you want extra professionalism:
 
 ### **1. What was the hardest part of this project?**
 
-Write 3–5 sentences.
+The most difficult part of this project was the sheer amount of moving parts that need to align for things to work right. Creating the different parts of the stack, working with multiple differnet languages, and ensuring that everything connects was a big challenge for this project. I frequently looked back on previous labs to base my structure on. Debugging was also a big challenge in this project, as many different things can go wrong and sometimes it is somthing very small that can throw off the whole project. Overall, I would say the biggest challenge is organization and mindset when building an app like this. It can become draining quickly when things go wrong, and so making sure to take things in small chunks helps a lot to work through everything.
 
 ### **2. What are you most proud of?**
 
-Could be a feature, a UI improvement, debugging work, or personal growth.
+I am most proud of the way I implemented the way that different users see different events. It is satisfying to see the way that each user's data is displayed to show their events and their RSVP's.
 
 ### **3. What would you do differently next time?**
 
-Think in terms of planning, scoping, or tech choices.
+Next time I would take the time to plan out all my routes in more depth, and how my database Schemas will need to be used to fit those routes. Initially I created CRUD routes for both of my modules, but I found out that I needed more that were specifcially tailored to my app and what it needed to do. In the future I would plan these routes out better and visualize what data needs to go where.
 
 ### **4. How did you incorporate feedback from the 12/5 check-in gallery?**
 
-Be explicit (this is graded):
-
-> “Based on feedback, I reduced scope by removing X and focused on stabilizing Y.”
-> “I reorganized my components for readability after feedback about structure.”
+During my feedback I did not have much to show my peers, and so I mainly disucssed my ideas and what challenges I may face. I discussed how user authentication would be my main challenge along with the access to user specfic data. I also learned some things from other students that I thought was interesting. I saw other users implementing similar login systems and so I took inspiration from their layouts. 
 
 ---
 
 # Acknowledgments / AI Usage Disclosure
 
-> Include a brief note on tools used (per academic integrity guidelines):
+For this project I utilized assistive AI to help me troubleshoot, debug, and style my project.
+I mainly used ChatGPT when stuck on how to approach certain features of my application. For example, I had stuggled to figure out how to include multiple pages on the application.
+ChatGPT gave me a framework and step-by-step process for using State to keep track pages. To acheive the result, I create a pages state in my App.jsx that can be changed through state on other components.
+This system allowed naviagtion to be simple to implement. Using this I was able to add dashboard and create events buttons that easily changed the state of the app.
 
-Examples:
+This project also proved to be quite challenging to debug, and so I would use ChatGPT when I could not fix the issue myself.
+An example of this is when I was trying to implement a way for the dashboard events list to automatically update the events based on when a user RSVP's or unRSVP's. ChatGPT showed me a short implementation on how to do this by updating the eventState I had created for the dashboard. By using the map function to go through the events and replace old events with updated ones, I was able to acheive the effect I was looking for. 
+Instances like these where I am not as confident in my react knowledge were where assitve AI was helpful to keep the project progressing.
 
-* “Used ChatGPT to help troubleshoot a CORS issue.”
-* “Used Claude for help writing documentation.”
-* “Used VSCode Copilot for autocomplete suggestions.”
+Finally, I used ChatGPT to improve my CSS styling of the different pages. Given the amount of time left to complete the project I chose to focus on the backend features. My styling was basic but not where I wanted it to be. In order to save some time and bring an extra level of professionalism, I had AI improve my styling for the pages. This worked well but there were some minor issues, such as buttons being incorrectly colored, that I went in and adjusted to my liking.
+
+Overall, I utilized AI a fair amount in this project to assist me in areas that I was stuck or struggling. It helped me to see smaller issues I had not noticed, and new ways to acheive things I did not expect. I always made sure to look over any code that I used, and that I understood how it ran and would play into my overall structure.
