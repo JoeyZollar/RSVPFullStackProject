@@ -33,6 +33,8 @@ List **3–6 key features**, ideally with short bullets:
 
 My advanced feature includes the ability for users to signup and log into accounts to have their own personalized events and RSVP's. My backend schemas store what events a user has created, and each event has an owner associated with it. Using react state, once a user's data is confirmed by entering their username and password, the app will display their personal event data. This works through a /api/login route that gets user data, which is then saved to the react user state in App.jsx. This state is then used to filter and display the correct events the user needs to see.
 
+Given more time I would have expanded this feature to include better security and authorization systems. I initially wanted to create a hashing system for password, but only was able to implement a basic login and signup system.
+
 ---
 
 ## 📸 Screenshots
