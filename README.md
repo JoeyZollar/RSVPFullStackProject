@@ -180,9 +180,18 @@ Body Example:
 
 Get's a users data from the database to log them in.
 
+Body Example:
+```json
+{
+username: "Username",
+password: "SuperSecretPassword"}
+}
+```
+
 ### **GET /api/users/:id
 
 Gets a user by their id and also populates their created events to be displayed by the frontend.
+
 Response example:
 
 ```json
